@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { createTeacherService } from "../services/studentService"
+import { createStudentService } from "../services/studentService"
 import {ITeacher} from "../models/teacherModel"
 
 
-export const registerTeacher = async (
+export const registerStudent = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -14,7 +14,7 @@ export const registerTeacher = async (
             throw new Error ("Missing name or email or password")
         }
 
-        const teacher = await createTeacherService(teacherName, email, password, className);
+        const teacher = await createStudentService(teacherName, email, password, className);
         res.status(201).json(teacher);
         } 
         

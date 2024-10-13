@@ -13,7 +13,8 @@ export const createStudentService = async(StudentName :string, email:string, pas
         studentName: StudentName,
         email: email,
         password: password,
-        class: isExistClass._id;
+        status: "student",
+        class: isExistClass._id
     })
     const newStudent = await createStudent(student);
     return newStudent

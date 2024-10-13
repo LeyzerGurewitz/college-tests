@@ -13,6 +13,7 @@ export interface IStudent extends Document {
   studentName: string;
   email: string;
   password: string;
+  status: string,
   grades?: IGrade[];
   class: Types.ObjectId;
 
@@ -36,6 +37,10 @@ const UserSchema = new Schema<IStudent>(
       password:{
         type: String,
         required: [true, "Please enter an password"],
+      },
+      status:{
+        type: String,
+        required: true,
       },
       grades:[
         {

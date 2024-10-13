@@ -6,6 +6,7 @@ export interface ITeacher extends Document {
   teacherName: string;
   email: string;
   password: string;
+  status: string;
   class: Types.ObjectId;
 }
 
@@ -27,6 +28,10 @@ const UserSchema = new Schema<ITeacher>(
       password:{
         type: String,
         required: [true, "Please enter an password"],
+      },
+      status:{
+        type: String,
+        required: true,
       },
       class:{
         type: Schema.Types.ObjectId,

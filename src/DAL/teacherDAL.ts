@@ -15,6 +15,15 @@ export const createNewClass = async(className:string): Promise<IClass> => {
     if(thereIsAlreadySuchAClass){
         throw new Error("There is already such a class")
     }
-    const newClass = await Class.create(className)
+    const newClass = await Class.create({className})
     return newClass
+}
+export const updateClassIdTeacher = async(teacher:ITeacher, classs:IClass): Promise<IClass> => {
+    const classUpdate = await Class.findByIdAndUpdate(classs._id,  { teacher: teacher._id },
+        {new: true}
+    )
+    if(!classUpdate){
+        throw new Error("No class found")
+    }
+    return classUpdate
 }
