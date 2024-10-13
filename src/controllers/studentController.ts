@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createStudentService } from "../services/studentService"
+import { createStudentService,  getAllGradesService } from "../services/studentService"
 import {ITeacher} from "../models/teacherModel"
 
 
@@ -22,3 +22,22 @@ export const registerStudent = async (
         next(error)
      }
 }
+
+export const getStudentGrades = async (req: any, res: Response,  next: NextFunction): Promise<void> => {
+    try {
+      
+      const userId = req.userId;
+  
+      if (!userId) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+      }
+  
+      
+      const grades = await  getAllGradesService(userId);
+  
+      res.status(200).json({ grades });
+    }catch (error) {
+        next(error)
+     }
+  };

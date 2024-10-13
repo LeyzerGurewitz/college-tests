@@ -10,7 +10,7 @@ export interface ITeacher extends Document {
   class: Types.ObjectId;
 }
 
-const UserSchema = new Schema<ITeacher>(
+const TeacherSchema = new Schema<ITeacher>(
     {
       teacherName: {
         type: String,
@@ -42,5 +42,5 @@ const UserSchema = new Schema<ITeacher>(
     { timestamps: true }
   );
   
-  export default mongoose.model<ITeacher>("teacher", UserSchema);
+  export default mongoose.model<ITeacher>("teacher", TeacherSchema);
   

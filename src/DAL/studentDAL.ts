@@ -1,5 +1,5 @@
 import { error } from "console";
-import Student, { IStudent } from "../models/studentModel";
+import Student, { IStudent , IGrade} from "../models/studentModel";
 import Class, {IClass} from "../models/classModel" 
 
 export const createStudent = async(student: IStudent): Promise<IStudent> =>{
@@ -22,3 +22,12 @@ export const UpdateClassStudentId = async (student:IStudent, classs:IClass): Pro
     classs.student.push(student._id);
     await classs.save();
 }
+
+export const getAllGrades = async(StudentId: string): Promise<IGrade[]> => {
+    const findStudent = await Student.findById(StudentId).select("grades");
+    if(!findStudent){
+        throw new Error("not find student")
+    }
+    return findStudent.grades
+}
+

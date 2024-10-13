@@ -14,12 +14,12 @@ export interface IStudent extends Document {
   email: string;
   password: string;
   status: string,
-  grades?: IGrade[];
+  grades: IGrade[];
   class: Types.ObjectId;
 
 }
 
-const UserSchema = new Schema<IStudent>(
+const StudentSchema = new Schema<IStudent>(
     {
       studentName: {
         type: String,
@@ -32,7 +32,7 @@ const UserSchema = new Schema<IStudent>(
         type: String,
         required: [true, "Please enter an email"],
         unique: true,
-        validate: [validator.isEmail, "Please enter a valid email"], // Using validator for email validation
+        validate: [validator.isEmail, "Please enter a valid email"], 
       },
       password:{
         type: String,
@@ -47,7 +47,7 @@ const UserSchema = new Schema<IStudent>(
            
             subject: {
                 type: String,
-                        // required: [true, "Please provide the subject name"]
+                        
                },
             grade: {
                 type: Number,
@@ -71,5 +71,5 @@ const UserSchema = new Schema<IStudent>(
     { timestamps: true }
   );
   
-  export default mongoose.model<IStudent>("student", UserSchema);
+  export default mongoose.model<IStudent>("student", StudentSchema);
   

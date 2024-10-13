@@ -7,7 +7,7 @@ export interface IClass extends Document {
   student: Types.ObjectId[];
 }
 
-const UserSchema = new Schema<IClass>(
+const classSchema = new Schema<IClass>(
     {
       className: {
         type: String,
@@ -30,5 +30,5 @@ const UserSchema = new Schema<IClass>(
     { timestamps: true }
   );
   
-  export default mongoose.model<IClass>("Class", UserSchema);
+  export default mongoose.model<IClass>("Class", classSchema);
   
